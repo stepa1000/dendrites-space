@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Data.Space.Base
       Data.Space.Bool
       Data.Universe
       Lib
