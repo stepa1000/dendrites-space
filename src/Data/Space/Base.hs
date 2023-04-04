@@ -1,6 +1,6 @@
 {-# LANGUAGE TypeOperators #-}
 
-module Data.Space.Bool where
+module Data.Space.Base where
 
 import Control.Comonad.Trans.Adjoint as W
 import Control.Comonad.Trans.Env
@@ -35,7 +35,7 @@ makeSpace fa fgNil gCentr a mg = do
         (Just (gb, a2)) -> do
           gbl <- fixF a2
           return $ gb : gbl
-        Nothing -> return $ repeat fg
+        Nothing -> return $ repeat fgNil
 
-upS :: (Adjunction f g, Comonad w) => Space f g a -> Space f g a
+upS :: (Adjunction f g) => Space f g a -> Space f g a
 upS = hoistWAdj up

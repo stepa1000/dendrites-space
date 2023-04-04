@@ -48,7 +48,7 @@ up :: Universe2 a -> Universe2 a
 up (Universe2 u) = Universe2 $ fmap right u
 
 down :: Universe2 a -> Universe2 a
-down (Universe2 u) = Universe2 $ gmap left u
+down (Universe2 u) = Universe2 $ fmap left u
 
 left2 :: Universe2 a -> Universe2 a
 left2 (Universe2 u) = Universe2 $ left u
@@ -57,7 +57,7 @@ right2 :: Universe2 a -> Universe2 a
 right2 (Universe2 u) = Universe2 $ right u
 
 goto2 :: Int -> Int -> Universe2 a -> Universe2 a
-goto2 x y (Universe2 u) = Universe2 $ goto x $ fmap (goto y)
+goto2 x y (Universe2 u) = Universe2 $ goto x $ fmap (goto y) u
 
 mapgoto2 :: Int -> Int -> (Universe2 a -> Universe2 a) -> Universe2 a -> Universe2 a
 mapgoto2 x y f = goto2 (-x) (-y) . f . goto2 x y

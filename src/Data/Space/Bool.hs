@@ -13,6 +13,7 @@ import Data.Set as Set
 import Data.Universe
 import GHC.Generics
 
+{-
 type Cell a = W.Adjoint (Env (TVar Bool)) (Reader (TVar Bool)) a
 
 type DataDendrit = Map (Set Bool) Bool
@@ -33,5 +34,6 @@ genEmptySpace = Universe2 $ makeUniverse id id $ makeUniverse id id Nothing
 initSpace :: Int -> StateT (SpaceBool ()) IO ()
 initSpace i sb = do
   mapM (\(x,y)-> do
-    return $ 
-    ) (liftA2 (,) [-i..i] [-i..i]) 
+    return $
+    ) (liftA2 (,) [-i..i] [-i..i])
+-}
