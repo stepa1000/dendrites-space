@@ -3,19 +3,14 @@
 module Data.Space.Base where
 
 import Control.Comonad.Trans.Adjoint as W
-import Control.Comonad.Trans.Env
-import Control.Concurrent.STM.TVar
-import Control.Monad.Reader
-import Control.Monad.State.Lazy
+import Control.Comonad.Trans.Class
+import Control.Core.Composition
 import Data.Functor.Adjunction
-import Data.Map as Map
-import Data.Set as Set
 import Data.Universe
-import GHC.Generics
 
 type Space f g a = W.AdjointT f g Universe2 a
 
-makeSpace :: (Monad m) => f () -> g b -> g b -> a -> (a -> m (Maybe (g b, a))) -> m (Space f g b)
+makeSpace :: (Monad m, Functor f) => f () -> g b -> g b -> a -> (a -> m (Maybe (g b, a))) -> m (Space f g b)
 makeSpace fa fgNil gCentr a mg = do
   ll <- fixF a
   rl <- fixF a
@@ -39,3 +34,15 @@ makeSpace fa fgNil gCentr a mg = do
 
 upS :: (Adjunction f g) => Space f g a -> Space f g a
 upS = hoistWAdj up
+
+downS :: (Adjunction f g) => Space f g a -> Space f g a
+downS = hoistWAdj down
+
+leftS :: (Adjunction f g) => Space f g a -> Space f g a
+leftS = hoistWAdj left2
+
+rightS :: (Adjunction f g) => Space f g a -> Space f g a
+rightS = hoistWAdj right2
+
+takeRange2S :: (Adjunction f g) => (Int, Int) -> (Int, Int) -> Space f g a -> [[a]]
+takeRange2S px py u = takeRange2 px py $ lower u

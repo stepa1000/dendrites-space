@@ -27,6 +27,7 @@ dependencies:
 - adjunctions
 - stm
 - containers
+- adjunction-combinators
 
 ghc-options:
 - -Wall

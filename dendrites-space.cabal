@@ -35,7 +35,8 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      adjunctions
+      adjunction-combinators
+    , adjunctions
     , base >=4.7 && <5
     , comonad
     , containers
@@ -51,7 +52,8 @@ executable dendrites-space-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      adjunctions
+      adjunction-combinators
+    , adjunctions
     , base >=4.7 && <5
     , comonad
     , containers
@@ -69,7 +71,8 @@ test-suite dendrites-space-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      adjunctions
+      adjunction-combinators
+    , adjunctions
     , base >=4.7 && <5
     , comonad
     , containers
