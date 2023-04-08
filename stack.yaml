@@ -42,7 +42,7 @@ packages:
 #
 extra-deps:
 - git: https://github.com/stepa1000/adjunction-combinators.git 
-  commit: fc914b5e2ea5d386d52b987a41433465ba1a3666
+  commit: f75ba648872a77839d8d14bde4f786d682b67f26
 # Override default flag values for local packages and extra-deps
 # flags: {}
 
